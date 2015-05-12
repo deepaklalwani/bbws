@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:/bbws.properties" />
+	</bean>
+	 
+
+  
+  <bean id="blackboardCoursesForUserService" class="edu.ku.it.si.blackboardcoursesforuser.service.BlackboardCoursesForUserServiceImpl" />
+   
+  <bean id="blackboardCoursesForUserController" class="edu.ku.it.si.blackboardcoursesforuser.controller.BlackboardCoursesForUserController" >
+
+    <property name="blackboardCoursesForUserService" ref="blackboardCoursesForUserService" />
+   
+   	<property name="blackboardServerURL" value="${bbws.blackboardServerURL}" />
+   	<property name="clientVendorId" value="${bbws.clientVendorId}" />
+   	<property name="clientProgramId" value="${bbws.clientProgramId}" />
+   	<property name="modulePath" value="${bbws.modulePath}" />
+   	<property name="sharedSecret" value="${bbws.sharedSecret}" />
+   	<property name="username" value="${bbws.username}" />
+
+   	
+   
+   </bean>
+
+</beans>
+
+
